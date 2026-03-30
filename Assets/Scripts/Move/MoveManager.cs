@@ -1,33 +1,31 @@
-namespace Moves
+
+public class MoveManager
 {
-    public class MoveManager
+    Move currentMove;
+    Fighter parent;
+
+    public MoveManager(Fighter parent)
     {
-        Move currentMove;
-        Fighter parent;
+        this.parent = parent;
+        
+    }
 
-        public MoveManager(Fighter parent)
+    public void ChangeMove(Move newMove)
+    {
+        if (currentMove != null)
         {
-            this.parent = parent;
-            
+            currentMove.Exit();
         }
+        currentMove = newMove;
+        currentMove.Enter();
+    }
 
-        public void ChangeMove(Move newMove)
+    public void Update()
+    {
+        Move newMove = currentMove.Update();
+        if (newMove != null)
         {
-            if (currentMove != null)
-            {
-                currentMove.Exit();
-            }
-            currentMove = newMove;
-            currentMove.Enter();
-        }
-
-        public void Update()
-        {
-            Move newMove = currentMove.Update();
-            if (newMove != null)
-            {
-                ChangeMove(newMove);
-            }
+            ChangeMove(newMove);
         }
     }
 }

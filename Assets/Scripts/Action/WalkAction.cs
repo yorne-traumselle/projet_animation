@@ -1,34 +1,32 @@
 using UnityEngine;
-using Moves;
-namespace Actions
-{   
-    public class WalkAction : Action
+
+
+public class WalkAction : Action
+{
+    WalkMove move;
+
+    public WalkAction(Fighter fighter, Vector3 destination) : base(fighter)
     {
-        WalkMove move;
+        this.move = new WalkMove(fighter, destination);
+    }
 
-        public WalkAction(Fighter fighter, Vector3 destination) : base(fighter)
-        {
-            this.move = new WalkMove(fighter, destination);
-        }
+    public override void OnEnter()
+    {
+        Debug.Log("enter walk");
+        fighter.ChangeMove(move);
+    }
 
-        public override void OnEnter()
-        {
-            Debug.Log("enter walk");
-            fighter.ChangeMove(move);
-        }
+    public override void OnExit()
+    {
+        Debug.Log("exit walk");
+    }
 
-        public override void OnExit()
+    public override Action Update()
+    {
+        if (move.IsFinished())
         {
-            Debug.Log("exit walk");
+            return new Idle(fighter);
         }
-
-        public override Action Update()
-        {
-            if (move.IsFinished())
-            {
-                return new Idle(fighter);
-            }
-            return null;
-        }
+        return null;
     }
 }

@@ -1,35 +1,33 @@
 using System;
 using UnityEditor;
-namespace Actions
+
+public class ActionManager
 {
-    public class ActionManager
+    Fighter parent;
+    Action currentAction;
+
+    public ActionManager(Fighter parent)
     {
-        Fighter parent;
-        Action currentAction;
+        this.parent = parent;
+        ChangeAction(new Idle(parent));
+    }
 
-        public ActionManager(Fighter parent)
+    public void ChangeAction(Action newAction)
+    {
+        if (currentAction != null)
         {
-            this.parent = parent;
-            ChangeAction(new Idle(parent));
+            currentAction.Exit();
         }
+        currentAction = newAction;
+        currentAction.Enter();
+    }
 
-        public void ChangeAction(Action newAction)
-        {
-            if (currentAction != null)
-            {
-                currentAction.Exit();
-            }
-            currentAction = newAction;
-            currentAction.Enter();
-        }
-
-        public void Update()
-        {
-            Action newAction = currentAction.Update();
-            if (newAction != null)
-            {            
-                ChangeAction(newAction);
-            }
+    public void Update()
+    {
+        Action newAction = currentAction.Update();
+        if (newAction != null)
+        {            
+            ChangeAction(newAction);
         }
     }
 }

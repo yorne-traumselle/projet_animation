@@ -9,6 +9,11 @@ public class StatsManager
     float attackDamage;
     float attackSpeed;
 
+    public float MovementSpeed
+    {
+        get { return movementSpeed; }
+    }
+
     public StatsManager(Fighter fighter, float maxHealth, float movementSpeed, float attackDamage, float attackSpeed)
     {
         this.fighter = fighter;

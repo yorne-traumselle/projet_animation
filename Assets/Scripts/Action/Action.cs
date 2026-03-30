@@ -1,40 +1,38 @@
 
-namespace Actions
+
+public class Action
 {
-    public class Action
+    protected Fighter fighter;
+    public Action(Fighter fighter)
     {
-        protected Fighter fighter;
-        public Action(Fighter fighter)
-        {
-        this.fighter = fighter;
-        }
+    this.fighter = fighter;
+    }
 
-        public bool CanEnter()
-        {
-            return true;
-        }
+    public virtual bool CanEnter()
+    {
+        return true;
+    }
 
-        public void Enter()
-        {
-            OnEnter();
-        }
-        public virtual void OnEnter()
-        {
+    public void Enter()
+    {
+        OnEnter();
+    }
+    public virtual void OnEnter()
+    {
 
-        }
+    }
 
-        public void Exit()
-        {
-            OnExit();
-        }
-        public virtual void OnExit()
-        {
+    public void Exit()
+    {
+        OnExit();
+    }
+    public virtual void OnExit()
+    {
 
-        }
+    }
 
-        public virtual Action Update()
-        {
-            return null;
-        }
+    public virtual Action Update()
+    {
+        return null;
     }
 }

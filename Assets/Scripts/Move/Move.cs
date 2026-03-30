@@ -1,35 +1,34 @@
 using UnityEngine;
 
-namespace Moves
+public class Move
 {
-    public class Move
+    protected Fighter fighter;
+    protected bool finished = false;
+
+    public Move(Fighter fighter)
     {
-        protected Fighter fighter;
-        protected bool finished = false;
+        this.fighter = fighter;
+    }
 
-        public Move(Fighter fighter)
-        {
-            this.fighter = fighter;
-        }
+    public float MoveSpeed { get { return fighter.Stats.MovementSpeed; } }
 
-        public virtual bool IsFinished()
-        {
-            return finished;
-        }
+    public virtual bool IsFinished()
+    {
+        return finished;
+    }
 
-        public void Exit()
-        {
-            finished = true;
-        }
+    public void Exit()
+    {
+        finished = true;
+    }
 
-        public void Enter()
-        {
-        
-        }
+    public virtual void Enter()
+    {
+    
+    }
 
-        public virtual Move Update()
-        {
-            return null;
-        }
+    public virtual Move Update()
+    {
+        return null;
     }
 }

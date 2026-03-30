@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.UI.Image;
-using Actions;
 
 public class InputManager : MonoBehaviour
 {
