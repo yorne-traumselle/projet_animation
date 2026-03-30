@@ -19,27 +19,28 @@ public enum CanCastResult
 public class Spell : MonoBehaviour
 {
     [SerializeField]
-    private string displayName;
+    protected string displayName;
 
     [SerializeField]
-    private float cooldown;
+    protected float cooldown;
     [SerializeField]
-    private float range;
+    protected float range;
 
     [SerializeField]
-    private float castTime;
+    protected float castTime;
 
     [SerializeField]
-    private CastType castType;
+    protected CastType castType;
 
-    private Fighter fighter;
-    private Fighter target;
-    private Vector3 pointTarget;
-    private float cooldownTimer;
+    protected Fighter caster;
+    protected Fighter target;
+    protected Vector3 pointTarget;
+    protected float cooldownTimer;
 
     public void SetCaster(Fighter fighter)
     {
-        this.fighter = fighter;
+        this.caster = fighter;
+        
     }
 
     public bool IsOnCooldown()
@@ -86,7 +87,7 @@ public class Spell : MonoBehaviour
         {
             if (castType == CastType.Fighter)
             {
-                float distance = Vector3.Distance(fighter.transform.position, target.transform.position);
+                float distance = Vector3.Distance(caster.transform.position, target.transform.position);
                 if (distance > range)
                 {
                     return CanCastResult.TargetOutOfRange;
@@ -94,7 +95,7 @@ public class Spell : MonoBehaviour
             }
             else if (castType == CastType.Point)
             {
-                float distance = Vector3.Distance(fighter.transform.position, pointTarget);
+                float distance = Vector3.Distance(caster.transform.position, pointTarget);
                 if (distance > range)
                 {
                     return CanCastResult.PointOutOfRange;

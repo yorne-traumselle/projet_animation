@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Fighter : MonoBehaviour
     MoveManager moveManager;
     ActionManager actionManager;
     StatsManager statsManager;
+    SpellManager spellManager;
     FighterState state = FighterState.Alive;
 
     [SerializeField]
@@ -30,12 +32,15 @@ public class Fighter : MonoBehaviour
     GameObject[] passivePrefabs;
 
     public StatsManager Stats { get { return statsManager; } }
+    public SpellManager SpellManager { get { return spellManager; } }
 
     void Start()
     {
         moveManager = new MoveManager(this);
         actionManager = new ActionManager(this);
         statsManager = new StatsManager(this, maxHealth, movementSpeed, attackDamage, attackSpeed);
+        spellManager = gameObject.AddComponent<SpellManager>();
+        spellManager.Init(this, spellPrefabs, passivePrefabs);
     }
 
     void Update()

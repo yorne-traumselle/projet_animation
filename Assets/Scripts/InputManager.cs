@@ -28,5 +28,29 @@ public class InputManager : MonoBehaviour
         {
             GetComponent<Fighter>().ChangeAction(new WalkAction(GetComponent<Fighter>(), new Vector3(worldPos.x, 0, worldPos.z)));
         }
+        
+        int spellIndex = -1;
+        if (Keyboard.current.qKey.wasPressedThisFrame)
+        {
+            spellIndex = 0;
+        }
+        else if (Keyboard.current.wKey.wasPressedThisFrame)
+        {
+            spellIndex = 1;
+        }
+        else if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            spellIndex = 2;
+        }
+        else if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            spellIndex = 3;
+        }
+
+        if (spellIndex != -1)
+        {
+            GetComponent<Fighter>().SpellManager.Cast(spellIndex, null, worldPos);
+            Debug.Log("Casting spell at index: " + spellIndex);
+        }
     }
 }
