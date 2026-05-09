@@ -56,6 +56,7 @@ public class Spell : MonoBehaviour
     {
         this.target = target;
         this.pointTarget = pointTarget;
+        this.pointTarget.y = 0;
     }
 
     public void Update()
@@ -109,6 +110,10 @@ public class Spell : MonoBehaviour
     public Action Cast()
     {
         StartCooldown();
+        if (castType == CastType.Point)
+        {
+            caster.gameObject.transform.LookAt(pointTarget);
+        }
         return OnCast();
     }
     public virtual Action OnCast()

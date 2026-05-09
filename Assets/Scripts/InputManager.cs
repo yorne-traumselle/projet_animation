@@ -4,16 +4,24 @@ using static UnityEngine.UI.Image;
 
 public class InputManager : MonoBehaviour
 {
-    public Camera cam;
+    [SerializeField]
+    Camera cam;
     Vector3 worldPos;
 
     void Start()
     {
         cam = Camera.main;
+        if (cam == null)
+        {
+            Debug.LogError("InputManager: Main camera not found! Make sure the camera is tagged as 'MainCamera'");
+        }
     }
 
     void Update()
     {
+        if (cam == null)
+            return;
+
         float mouseX = Mouse.current.position.x.ReadValue();
         float mouseY = Mouse.current.position.y.ReadValue();
 
@@ -26,7 +34,11 @@ public class InputManager : MonoBehaviour
         }
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
-            GetComponent<Fighter>().ChangeAction(new WalkAction(GetComponent<Fighter>(), new Vector3(worldPos.x, 0, worldPos.z)));
+            Fighter fighter = GetComponent<Fighter>();
+            if (fighter != null)
+            {
+                fighter.ChangeAction(new WalkAction(fighter, new Vector3(worldPos.x, 0, worldPos.z)));
+            }
         }
         
         int spellIndex = -1;
@@ -49,8 +61,12 @@ public class InputManager : MonoBehaviour
 
         if (spellIndex != -1)
         {
-            GetComponent<Fighter>().SpellManager.Cast(spellIndex, null, worldPos);
-            Debug.Log("Casting spell at index: " + spellIndex);
+            Fighter fighter = GetComponent<Fighter>();
+            if (fighter != null && fighter.SpellManager != null)
+            {
+                fighter.SpellManager.Cast(spellIndex, null, worldPos);
+                Debug.Log("Casting spell at index: " + spellIndex);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum FighterState
 {
@@ -31,6 +32,15 @@ public class Fighter : MonoBehaviour
     [SerializeField]
     GameObject[] passivePrefabs;
 
+    [SerializeField]
+    float height = 4f;
+    [SerializeField]
+    float radius = 0.5f;
+
+    [SerializeField]
+    GameObject healthBarPrefab;
+    Slider healthBarSlider;
+
     public StatsManager Stats { get { return statsManager; } }
     public SpellManager SpellManager { get { return spellManager; } }
 
@@ -41,12 +51,51 @@ public class Fighter : MonoBehaviour
         statsManager = new StatsManager(this, maxHealth, movementSpeed, attackDamage, attackSpeed);
         spellManager = gameObject.AddComponent<SpellManager>();
         spellManager.Init(this, spellPrefabs, passivePrefabs);
+
+        InitCollider();
+
+        if (healthBarPrefab != null)
+        {
+            GameObject healthBar = Instantiate(healthBarPrefab, transform);
+            healthBarSlider = healthBar.GetComponentInChildren<Slider>();
+        }
+
+    }
+
+    void InitCollider()
+    {
+        CapsuleCollider collider = GetComponent<CapsuleCollider>();
+        if (collider == null)
+        {
+            collider = gameObject.AddComponent<CapsuleCollider>();
+        }
+        collider.height = height;
+        collider.radius = radius;
+        collider.isTrigger = true;
+
+        // Ensure trigger events are generated
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = gameObject.AddComponent<Rigidbody>();
+        }
+        rb.isKinematic = true;
+        rb.useGravity = false;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+    
     }
 
     void Update()
     {
         moveManager.Update();
         actionManager.Update();   
+
+        if (healthBarSlider != null)
+        {
+            healthBarSlider.transform.LookAt(Camera.main.transform);
+            healthBarSlider.transform.Rotate(0, 180, 0); // Flip to face the camera
+            healthBarSlider.value = statsManager.Health / statsManager.MaxHealth;
+        }
     }
 
     public void ChangeAction(Action newAction)
@@ -69,5 +118,10 @@ public class Fighter : MonoBehaviour
     public bool IsAlive()
     {
         return state == FighterState.Alive;
+    }
+
+    public void ApplyDamage(float damage)
+    {
+            statsManager.ApplyDamage(damage);
     }
 }
