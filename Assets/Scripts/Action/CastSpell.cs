@@ -13,11 +13,13 @@ public class CastSpell : Action
 
     public override Action Update()
     {
+        // Debug.Log("Updating CastSpell action for spell " + spell.name + " on fighter " + fighter.name);
         if (isCasting)
         {
             castTime -= Time.deltaTime;
             if (castTime <= 0)
             {
+                Debug.Log("Finished casting spell " + spell.name);
                 return spell.Cast();
             }
             else {

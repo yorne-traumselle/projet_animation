@@ -8,7 +8,6 @@ public class CameraManager : MonoBehaviour
     public float smoothSpeed = 0.125f;
 
     GameObject myCamera;
-    [SerializeField]
     GameObject player;
 
     void Start()
@@ -16,8 +15,17 @@ public class CameraManager : MonoBehaviour
         myCamera = Camera.main.gameObject;
     }
 
+    public void SetPlayer(GameObject player)
+    {
+        this.player = player;
+        target = player.transform;
+    }
+
     void Update()
     {
-        gameObject.transform.position = player.transform.position;
+        if (player != null)
+        {
+            gameObject.transform.position = player.transform.position;
+        }
     }
 }

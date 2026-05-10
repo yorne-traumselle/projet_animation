@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestSpell
   displayName: Test Spell
-  cooldown: 0
+  cooldown: 2
   range: 0
   castTime: 0
   castType: 1

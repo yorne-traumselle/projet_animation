@@ -14,9 +14,11 @@ public class Fighter : MonoBehaviour
 {
     MoveManager moveManager;
     ActionManager actionManager;
+    public ActionManager ActionManager { get { return actionManager; } }
     StatsManager statsManager;
     SpellManager spellManager;
     FighterState state = FighterState.Alive;
+    FighterManager fighterManager;
 
     [SerializeField]
     float maxHealth = 100f;
@@ -43,6 +45,7 @@ public class Fighter : MonoBehaviour
 
     public StatsManager Stats { get { return statsManager; } }
     public SpellManager SpellManager { get { return spellManager; } }
+    public FighterState FighterState { get { return state; } }
 
     void Start()
     {
@@ -60,6 +63,16 @@ public class Fighter : MonoBehaviour
             healthBarSlider = healthBar.GetComponentInChildren<Slider>();
         }
 
+    }
+
+    public void SetFighterManager(FighterManager manager)
+    {
+        fighterManager = manager;
+    }
+
+    public FighterManager GetFighterManager()
+    {
+        return fighterManager;
     }
 
     void InitCollider()
@@ -123,5 +136,15 @@ public class Fighter : MonoBehaviour
     public void ApplyDamage(float damage)
     {
             statsManager.ApplyDamage(damage);
+    }
+
+    public float GetSpellCooldown(int spellIndex)
+    {
+        return spellManager.GetSpellCooldown(spellIndex);
+    }
+
+    public float GetSpellCooldownTime(int spellIndex)
+    {
+        return spellManager.GetSpellCooldownTime(spellIndex);
     }
 }

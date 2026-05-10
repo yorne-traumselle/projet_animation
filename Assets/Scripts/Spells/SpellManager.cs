@@ -33,7 +33,33 @@ public class SpellManager: MonoBehaviour
             Debug.LogError("Invalid spell index: " + index);
             return;
         }
-        spells[index].Init(target, position);
-        parent.ChangeAction(new CastSpell(spells[index], parent));
+        if (!spells[index].IsOnCooldown())
+        {
+            spells[index].Init(target, position);
+            if (parent.ActionManager.CurrentAction.GetType() != typeof(CastSpell))
+            {
+                parent.ChangeAction(new CastSpell(spells[index], parent));
+            }
+        }
+    }
+
+    public float GetSpellCooldown(int index)
+    {
+        if (index < 0 || index >= spells.Count)
+        {
+            Debug.LogError("Invalid spell index: " + index);
+            return 0f;
+        }
+        return spells[index].GetCooldown();
+    }
+
+    public float GetSpellCooldownTime(int index)
+    {
+        if (index < 0 || index >= spells.Count)
+        {
+            Debug.LogError("Invalid spell index: " + index);
+            return 100f;
+        }
+        return spells[index].GetCooldownTime();
     }
 }

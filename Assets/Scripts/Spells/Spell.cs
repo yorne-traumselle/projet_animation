@@ -103,7 +103,6 @@ public class Spell : MonoBehaviour
                 }
             }
         }
-
         return CanCastResult.Can;
     }
 
@@ -124,6 +123,16 @@ public class Spell : MonoBehaviour
     public void StartCooldown()
     {
         cooldownTimer = cooldown;
+    }
+
+    public float GetCooldown()
+    {
+        return cooldownTimer;
+    }
+    
+    public float GetCooldownTime()
+    {
+        return cooldown;
     }
         
 }
