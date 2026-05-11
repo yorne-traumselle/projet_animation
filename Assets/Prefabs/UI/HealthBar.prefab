@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7571256078902999758}
   - component: {fileID: 6759061030423458641}
   - component: {fileID: 5257596840387554914}
+  - component: {fileID: 3157271787455040066}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -102,6 +103,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3157271787455040066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572560315833996514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c65fae15a165ae9abdad6b90038fd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthbarSizeManager
 --- !u!1 &4749810065331775906
 GameObject:
   m_ObjectHideFlags: 0

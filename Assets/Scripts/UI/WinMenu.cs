@@ -14,6 +14,7 @@ public class WinMenu : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
+        Debug.Log("Restarting game...");
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

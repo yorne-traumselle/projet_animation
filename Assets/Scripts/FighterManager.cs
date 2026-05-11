@@ -65,9 +65,9 @@ public class FighterManager : MonoBehaviour
     {
         if (player.FighterState == FighterState.Dead)
         {
-            Debug.Log("Player defeated!");
             if (deathMenuPrefab != null && currentStage != Stage.Death)
             {
+                Debug.Log("Player defeated!");
                 currentStage = Stage.Death;
                 Instantiate(deathMenuPrefab, Vector3.zero, Quaternion.identity);
             }

@@ -39,7 +39,7 @@ public class StatsManager
     public void ApplyDamage(float damage)
     {
         health -= damage;
-        Debug.Log($"Fighter took {damage} damage, current health: {health}");
+        // Debug.Log($"Fighter took {damage} damage, current health: {health}");
         if (health <= 0)
         {
             health = 0;

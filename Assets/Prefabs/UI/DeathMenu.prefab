@@ -324,7 +324,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3695149915880965934}
         m_TargetAssemblyTypeName: WinMenu, Assembly-CSharp
-        m_MethodName: OnMenuButtonClick
+        m_MethodName: OnRestartButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 5120703531452148286}
   - component: {fileID: 3870250118683736821}
   m_Layer: 5
-  m_Name: Scrollbar
+  m_Name: HealthScrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,6 +579,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02723d7994c717259e0741bca903f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+  volumeScroll: {fileID: 5716081885048965894}
+  healthbarSizeScroll: {fileID: 3870250118683736821}
 --- !u!1 &4859896897388093879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1625,7 @@ GameObject:
   - component: {fileID: 7527964419494770024}
   - component: {fileID: 5716081885048965894}
   m_Layer: 5
-  m_Name: Scrollbar
+  m_Name: MusicScrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1730,7 +1732,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5463893252073995827}
   m_HandleRect: {fileID: 82308249774606479}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 0.2
   m_NumberOfSteps: 0
   m_OnValueChanged:

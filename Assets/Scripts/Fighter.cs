@@ -135,7 +135,7 @@ public class Fighter : MonoBehaviour
 
     public void ApplyDamage(float damage)
     {
-            statsManager.ApplyDamage(damage);
+        statsManager.ApplyDamage(damage);
     }
 
     public float GetSpellCooldown(int spellIndex)

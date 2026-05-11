@@ -19,7 +19,7 @@ public class SpellsUI: MonoBehaviour
     {
         if (fighter_manager.Player != null)
         {   
-            Debug.Log("Spell 1 cooldown: " + fighter_manager.Player.GetSpellCooldown(0) + " / " + fighter_manager.Player.GetSpellCooldownTime(0));
+            // Debug.Log("Spell 1 cooldown: " + fighter_manager.Player.GetSpellCooldown(0) + " / " + fighter_manager.Player.GetSpellCooldownTime(0));
             
             cover1.fillAmount = fighter_manager.Player.GetSpellCooldown(0) / fighter_manager.Player.GetSpellCooldownTime(0);
 

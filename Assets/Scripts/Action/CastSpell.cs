@@ -19,7 +19,7 @@ public class CastSpell : Action
             castTime -= Time.deltaTime;
             if (castTime <= 0)
             {
-                Debug.Log("Finished casting spell " + spell.name);
+                // Debug.Log("Finished casting spell " + spell.name);
                 return spell.Cast();
             }
             else {

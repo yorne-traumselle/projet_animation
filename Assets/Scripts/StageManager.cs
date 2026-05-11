@@ -10,15 +10,10 @@ public class StageManager : MonoBehaviour
     GameObject CurrentStage;
 
     [SerializeField]
-    GameObject Stage2Prefab;
+    GameObject StagePrefab;
 
     [SerializeField]
-    GameObject Stage3Prefab;
-
-    [SerializeField]
-    GameObject Path1Prefab;
-    [SerializeField]
-    GameObject Path2Prefab;
+    GameObject PathPrefab;
 
     [SerializeField]
     TriggerEventComponent Trigger1;
@@ -43,7 +38,7 @@ public class StageManager : MonoBehaviour
     {
         Debug.Log("Trigger1");
         Destroy(CurrentStage);
-        CurrentStage =  Instantiate(Stage2Prefab, new Vector3(1.0f, 0, -140.0f), Quaternion.identity);
+        CurrentStage =  Instantiate(StagePrefab, new Vector3(1.0f, 0, -140.0f), Quaternion.identity);
         
     }
     void OnTrigger2()
@@ -56,23 +51,23 @@ public class StageManager : MonoBehaviour
     void OnTrigger3()
     {
         Destroy(CurrentStage);
-        CurrentStage = Instantiate(Stage3Prefab, new Vector3(1.0f, 0, -279.6f), Quaternion.identity);
+        CurrentStage = Instantiate(StagePrefab, new Vector3(1.0f, 0, -279.6f), Quaternion.identity);
     }
 
     void OnTrigger4()
     {
         Destroy(CurrentPath);
-        CurrentStage = Instantiate(Stage3Prefab, new Vector3(1.0f, 0, -279.6f), Quaternion.identity);
+        CurrentStage = Instantiate(StagePrefab, new Vector3(1.0f, 0, -279.6f), Quaternion.identity);
         fighter_manager.Stage3();
     }
 
     public void InitPath1()
     {
-        CurrentPath = Instantiate(Path1Prefab, new Vector3(0, 0, -70.0f), Quaternion.identity);
+        CurrentPath = Instantiate(PathPrefab, new Vector3(0, 0, -70.0f), Quaternion.identity);
     }
 
     public void InitPath2()
     {
-        CurrentPath = Instantiate(Path2Prefab, new Vector3(0, 0, -210.1f), Quaternion.identity);
+        CurrentPath = Instantiate(PathPrefab, new Vector3(0, 0, -210.1f), Quaternion.identity);
     }
 }
