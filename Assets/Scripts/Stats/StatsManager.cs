@@ -8,8 +8,6 @@ public class StatsManager
     float maxHealth;
     float health;
     float movementSpeed;
-    float attackDamage;
-    float attackSpeed;
 
     public float MovementSpeed
     {
@@ -26,14 +24,12 @@ public class StatsManager
         get { return health; }
     }
 
-    public StatsManager(Fighter fighter, float maxHealth, float movementSpeed, float attackDamage, float attackSpeed)
+    public StatsManager(Fighter fighter, float maxHealth, float movementSpeed)
     {
         this.fighter = fighter;
         this.maxHealth = maxHealth;
-        this.health = maxHealth;
+        health = maxHealth;
         this.movementSpeed = movementSpeed;
-        this.attackDamage = attackDamage;
-        this.attackSpeed = attackSpeed;
     }
 
     public void ApplyDamage(float damage)

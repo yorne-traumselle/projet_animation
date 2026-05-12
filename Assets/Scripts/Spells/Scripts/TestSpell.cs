@@ -3,6 +3,12 @@ public class TestSpell : Spell
 {
     [SerializeField]
     GameObject projectilePrefab;
+    [SerializeField]
+    float projectileRange = 10f;
+    [SerializeField]
+    float projectileSpeed = 5f;
+    [SerializeField]
+    float damage = 10f;
 
     public override Action OnCast()
     {
@@ -10,12 +16,12 @@ public class TestSpell : Spell
 
         GameObject projectile = Instantiate(projectilePrefab, caster.transform.position, Quaternion.identity);
         FightObject fightObject = projectile.GetComponent<FightObject>();
-        fightObject.SetDamage(10f);
+        fightObject.SetDamage(damage);
         fightObject.SetRemoveOnHit(true);
         fightObject.SetCaster(caster);
         if (fightObject != null)
         {
-            fightObject.SetTrajectory(new RectilignTrajectory(caster.transform.position, pointTarget, 10f, 5f));
+            fightObject.SetTrajectory(new RectilignTrajectory(caster.transform.position, pointTarget, projectileRange, projectileSpeed));
         }
         return new DefaultAction(caster);
     }

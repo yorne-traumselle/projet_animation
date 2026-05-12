@@ -10,6 +10,12 @@ public enum FighterState
     Dead
 }
 
+public enum FighterGroup
+{
+    Player,
+    Enemy
+}
+
 public class Fighter : MonoBehaviour
 {
     MoveManager moveManager;
@@ -21,13 +27,12 @@ public class Fighter : MonoBehaviour
     FighterManager fighterManager;
 
     [SerializeField]
+    FighterGroup group = FighterGroup.Enemy;
+
+    [SerializeField]
     float maxHealth = 100f;
     [SerializeField]
     float movementSpeed = 5f;
-    [SerializeField]
-    float attackDamage = 10f;
-    [SerializeField]
-    float attackSpeed = 1f;
 
     [SerializeField]
     GameObject[] spellPrefabs;
@@ -51,7 +56,7 @@ public class Fighter : MonoBehaviour
     {
         moveManager = new MoveManager(this);
         actionManager = new ActionManager(this);
-        statsManager = new StatsManager(this, maxHealth, movementSpeed, attackDamage, attackSpeed);
+        statsManager = new StatsManager(this, maxHealth, movementSpeed);
         spellManager = gameObject.AddComponent<SpellManager>();
         spellManager.Init(this, spellPrefabs, passivePrefabs);
 
@@ -138,6 +143,11 @@ public class Fighter : MonoBehaviour
         statsManager.ApplyDamage(damage);
     }
 
+    public void ApplyHeal(float healAmount)
+    {
+        statsManager.ApplyHeal(healAmount);
+    }
+
     public float GetSpellCooldown(int spellIndex)
     {
         return spellManager.GetSpellCooldown(spellIndex);
@@ -146,5 +156,15 @@ public class Fighter : MonoBehaviour
     public float GetSpellCooldownTime(int spellIndex)
     {
         return spellManager.GetSpellCooldownTime(spellIndex);
+    }
+
+    public bool IsFullHealth()
+    {
+        return statsManager.Health >= statsManager.MaxHealth;
+    }
+
+    public FighterGroup GetGroup()
+    {
+        return group;
     }
 }

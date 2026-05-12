@@ -1,8 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class EnemyProjectileSpell : Spell
 {
     [SerializeField]
     GameObject projectilePrefab;
+    [SerializeField]
+    float projectileRange = 40f;
+    [SerializeField]
+    float projectileSpeed = 15f;
+    [SerializeField]
+    float damage = 10f;
 
     public override Action OnCast()
     {
@@ -10,12 +17,12 @@ public class EnemyProjectileSpell : Spell
 
         GameObject projectile = Instantiate(projectilePrefab, caster.transform.position, Quaternion.identity);
         FightObject fightObject = projectile.GetComponent<FightObject>();
-        fightObject.SetDamage(10f);
+        fightObject.SetDamage(damage);
         fightObject.SetRemoveOnHit(true);
         fightObject.SetCaster(caster);
         if (fightObject != null)
         {
-            fightObject.SetTrajectory(new RectilignTrajectory(caster.transform.position, pointTarget, 40f, 15f));
+            fightObject.SetTrajectory(new RectilignTrajectory(caster.transform.position, pointTarget, projectileRange, projectileSpeed));
         }
         return new DefaultAction(caster);
     }

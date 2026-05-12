@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2b828ea74e9f637aecfa489715f423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FightObject
+  collisionAngle: 361
 --- !u!65 &1055431084664218957
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,5 +156,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}

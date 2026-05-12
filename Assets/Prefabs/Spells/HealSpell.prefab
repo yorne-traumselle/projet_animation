@@ -49,4 +49,4 @@ MonoBehaviour:
   range: 0
   castTime: 0
   castType: 2
-  healAmount: 50
+  healAmount: 100

@@ -1245,10 +1245,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FighterManager
   playerPrefab: {fileID: 1907159286521586129, guid: b768aa9dc8f62248bba89ba71f6e576b, type: 3}
   rangeEnemyPrefab: {fileID: 4797500947319194423, guid: 205f526d1949c3e979ee65d5fe6a9722, type: 3}
+  meleeEnemyPrefab: {fileID: 2884791899253369121, guid: 786e6ae88dbc389d387ff3fa44dc166e, type: 3}
+  healerEnemyPrefab: {fileID: 297697796027933710, guid: 7fff8847062c73760a5b9d75a89b3b7f, type: 3}
   camera_manager: {fileID: 1529739398}
   stage_manager: {fileID: 2075862286}
   winMenuPrefab: {fileID: 6617724983205046968, guid: ba7210061edf19f27be2b0678bab0394, type: 3}
   deathMenuPrefab: {fileID: 6617724983205046968, guid: c7b4cb392be638520931c95a23c2a00c, type: 3}
+  enemies: []
 --- !u!1 &1517291602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1517,7 @@ Transform:
   m_GameObject: {fileID: 1690788269}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 40, z: 0}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2477,6 +2480,8 @@ MonoBehaviour:
   Trigger2: {fileID: 1081108280}
   Trigger3: {fileID: 1799095249}
   Trigger4: {fileID: 1695106274}
+  stage2Center: {x: 1, y: 0, z: -140}
+  stage3Center: {x: 1, y: 0, z: -279.6}
 --- !u!4 &2075862287
 Transform:
   m_ObjectHideFlags: 0

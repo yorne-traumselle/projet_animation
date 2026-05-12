@@ -89,7 +89,7 @@ public class FightObject : MonoBehaviour
         }
 
         Fighter target = other.GetComponent<Fighter>();
-        if (target != null && target != caster && !fightersHit.Contains(target))
+        if (target != null && target != caster && !fightersHit.Contains(target) && target.GetGroup() != caster.GetGroup())
         {
             Debug.Log("FightObject collided with " + other.name);
             fightersHit.Add(target);

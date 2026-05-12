@@ -47,10 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e2d9ab9059b5b874bc06f7fa9ff757c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fighter
-  maxHealth: 100
+  group: 1
+  maxHealth: 200
   movementSpeed: 5
-  attackDamage: 10
-  attackSpeed: 1
   spellPrefabs:
   - {fileID: 8191280595502169482, guid: 9c44b6635248818d0a386f2255f49ef4, type: 3}
   passivePrefabs: []

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5241310134309267070
+--- !u!1 &5345395078093511916
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2399566381415305148}
-  - component: {fileID: 4419843952528669226}
+  - component: {fileID: 7477969380084133355}
+  - component: {fileID: 4826856487436452137}
   m_Layer: 0
-  m_Name: SlashSpell
+  m_Name: EnemyMeleeSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2399566381415305148
+--- !u!4 &7477969380084133355
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5241310134309267070}
+  m_GameObject: {fileID: 5345395078093511916}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.80526, y: 1.49266, z: 0.78191}
+  m_LocalPosition: {x: 2.59097, y: 0.5, z: 28.72029}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4419843952528669226
+--- !u!114 &4826856487436452137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5241310134309267070}
+  m_GameObject: {fileID: 5345395078093511916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a787e17fb8281dd3591b9acb5a112512, type: 3}
+  m_Script: {fileID: 11500000, guid: 190a73a75dbe6b59f8e37b139bc5b4db, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SlashSpell
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeSpell
   displayName: 
-  cooldown: 2
-  range: 0
+  cooldown: 5
+  range: 5
   castTime: 0
-  castType: 1
-  objectPrefab: {fileID: 6787444621658638698, guid: b97ee2555b5fbbf968a75cd06af25e27, type: 3}
+  castType: 0
+  objectPrefab: {fileID: 745787448667991753, guid: 08113b1a22e5ed808914b8374740e10f, type: 3}
+  damage: 100

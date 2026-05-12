@@ -50,3 +50,6 @@ MonoBehaviour:
   castTime: 0
   castType: 1
   projectilePrefab: {fileID: 6244406275518387326, guid: b05048963e5d565319891bec8dea8097, type: 3}
+  projectileRange: 142
+  projectileSpeed: 20
+  damage: 10

@@ -7,6 +7,11 @@ public class FighterManager : MonoBehaviour
     GameObject playerPrefab;
     [SerializeField]
     GameObject rangeEnemyPrefab;
+    [SerializeField]
+    Fighter meleeEnemyPrefab;
+
+    [SerializeField]
+    Fighter healerEnemyPrefab;
 
     [SerializeField]
     CameraManager camera_manager;
@@ -23,8 +28,8 @@ public class FighterManager : MonoBehaviour
     Fighter player;
     public Fighter Player => player;
 
-    List<Fighter> enemies;
-    Stage currentStage = Stage.Stage1;
+    public List<Fighter> enemies;
+    public Stage currentStage = Stage.Stage1;
     
     void Start()
     {
@@ -38,20 +43,54 @@ public class FighterManager : MonoBehaviour
 
     void Stage1()
     {
-        AddRangeEnemy(new Vector3(5, 0, 0));
-        AddRangeEnemy(new Vector3(-5, 0, 0));        
+        AddRangeEnemy(new Vector3(50, 0, 0));
+        AddRangeEnemy(new Vector3(-50, 0, 0));
+        AddMeleeEnemy(new Vector3(0, 0, -50));    
     }
 
     public void Stage2()
     {
-        AddRangeEnemy(new Vector3(5, 0, -150));
-        AddRangeEnemy(new Vector3(-5, 0, -150));        
+        // 4 range enemies on each angle
+        AddRangeEnemy(new Vector3(50, 0, 50) + stage_manager.stage2Center);
+        AddRangeEnemy(new Vector3(-50, 0, -50) + stage_manager.stage2Center);
+        AddRangeEnemy(new Vector3(-50, 0, 50) + stage_manager.stage2Center);
+        AddRangeEnemy(new Vector3(50, 0, -50) + stage_manager.stage2Center);
+
+        // 2 melee enemies in the middle
+        AddMeleeEnemy(new Vector3(10, 0, 0) + stage_manager.stage2Center);
+        AddMeleeEnemy(new Vector3(-10, 0, 0) + stage_manager.stage2Center);
+
+        // 1 healer enemy in the back
+        AddHealerEnemy(new Vector3(0, 0, -50) + stage_manager.stage2Center);    
     }
 
     public void Stage3()
     {
-        AddRangeEnemy(new Vector3(5, 0, -300));
-        AddRangeEnemy(new Vector3(-5, 0, -300));        
+        // 6 shooters on the sides
+        AddRangeEnemy(new Vector3(50, 0, 50) + stage_manager.stage3Center);
+        AddRangeEnemy(new Vector3(-50, 0, -50) + stage_manager.stage3Center);
+        AddRangeEnemy(new Vector3(-50, 0, 50) + stage_manager.stage3Center);
+        AddRangeEnemy(new Vector3(50, 0, -50) + stage_manager.stage3Center);
+        AddRangeEnemy(new Vector3(50, 0, 0) + stage_manager.stage3Center);
+        AddRangeEnemy(new Vector3(-50, 0, 0) + stage_manager.stage3Center);
+
+        // 4 melee enemies in the middle
+        AddMeleeEnemy(new Vector3(10, 0, 0) + stage_manager.stage3Center);
+        AddMeleeEnemy(new Vector3(20, 0, 0) + stage_manager.stage3Center);
+        AddMeleeEnemy(new Vector3(-10, 0, 0) + stage_manager.stage3Center);
+        AddMeleeEnemy(new Vector3(-20, 0, 0) + stage_manager.stage3Center);
+
+        // 3 healer enemies in the back
+        AddHealerEnemy(new Vector3(0, 0, -50) + stage_manager.stage3Center);
+        AddHealerEnemy(new Vector3(-10, 0, -50) + stage_manager.stage3Center);
+        AddHealerEnemy(new Vector3(10, 0, -50) + stage_manager.stage3Center);
+    }
+
+    void AddMeleeEnemy(Vector3 position)
+    {
+        Fighter meleeEnemy = Instantiate(meleeEnemyPrefab, position, Quaternion.identity);
+        meleeEnemy.SetFighterManager(this);
+        enemies.Add(meleeEnemy);
     }
 
     void AddRangeEnemy(Vector3 position)
@@ -59,6 +98,13 @@ public class FighterManager : MonoBehaviour
         Fighter rangeEnemy = Instantiate(rangeEnemyPrefab, position, Quaternion.identity).GetComponent<Fighter>();
         rangeEnemy.SetFighterManager(this);
         enemies.Add(rangeEnemy);
+    }
+
+    void AddHealerEnemy(Vector3 position)
+    {
+        Fighter healerEnemy = Instantiate(healerEnemyPrefab, position, Quaternion.identity).GetComponent<Fighter>();
+        healerEnemy.SetFighterManager(this);
+        enemies.Add(healerEnemy);
     }
 
     void Update()

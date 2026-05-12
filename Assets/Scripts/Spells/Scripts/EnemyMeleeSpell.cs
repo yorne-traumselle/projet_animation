@@ -1,18 +1,20 @@
 using UnityEngine;
-public class SlashSpell : Spell
+
+public class EnemyMeleeSpell : Spell
 {
     [SerializeField]
     GameObject objectPrefab;
+    [SerializeField]
+    float damage = 50f;
 
     public override Action OnCast()
     {
-        Debug.Log("Slash spell casted");
+        Debug.Log("Ult spell casted");
 
-        GameObject projectile = Instantiate(objectPrefab, caster.transform.position, Quaternion.FromToRotation(Vector3.forward, caster.transform.forward));
-
+        GameObject projectile = Instantiate(objectPrefab, caster.transform.position, Quaternion.identity);
         FightObject fightObject = projectile.GetComponent<FightObject>();
         fightObject.SetCaster(caster);
-        fightObject.SetDamage(10f);
+        fightObject.SetDamage(damage);
         fightObject.SetLifetime(.5f);
         return new DefaultAction(caster);
     }
