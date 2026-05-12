@@ -7,6 +7,9 @@ public class TriggerEventComponent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnTriggerEnterEvent.Invoke();
+        if (other.GetComponent<Fighter>() != null)
+        {
+            OnTriggerEnterEvent.Invoke();
+        }
     }
 }

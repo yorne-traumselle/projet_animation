@@ -20,8 +20,9 @@ public class DashMove: Move
         Vector3 direction = (destination - fighter.transform.position).normalized;
         fighter.transform.LookAt(destination);
         fighter.transform.position += direction * speed * Time.deltaTime;
-        if (Vector3.Distance(fighter.transform.position, destination) < 0.1f)
-        {
+        if (Vector3.Distance(fighter.transform.position, destination) < 0.1f * speed)
+        {   
+            fighter.transform.position = destination;
             return new Stationary(fighter);
         }
         return null;
