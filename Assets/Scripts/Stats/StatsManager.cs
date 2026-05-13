@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public class StatsManager
 {
     Fighter fighter;
@@ -6,27 +8,34 @@ public class StatsManager
     float maxHealth;
     float health;
     float movementSpeed;
-    float attackDamage;
-    float attackSpeed;
 
     public float MovementSpeed
     {
         get { return movementSpeed; }
     }
 
-    public StatsManager(Fighter fighter, float maxHealth, float movementSpeed, float attackDamage, float attackSpeed)
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+    }
+
+    public float Health
+    {
+        get { return health; }
+    }
+
+    public StatsManager(Fighter fighter, float maxHealth, float movementSpeed)
     {
         this.fighter = fighter;
         this.maxHealth = maxHealth;
-        this.health = maxHealth;
+        health = maxHealth;
         this.movementSpeed = movementSpeed;
-        this.attackDamage = attackDamage;
-        this.attackSpeed = attackSpeed;
     }
 
-    public void applyDamage(float damage)
+    public void ApplyDamage(float damage)
     {
         health -= damage;
+        // Debug.Log($"Fighter took {damage} damage, current health: {health}");
         if (health <= 0)
         {
             health = 0;
@@ -34,7 +43,7 @@ public class StatsManager
         }
     }
 
-    public void applyHeal(float heal)
+    public void ApplyHeal(float heal)
     {
         health += heal;
         if (health > maxHealth)

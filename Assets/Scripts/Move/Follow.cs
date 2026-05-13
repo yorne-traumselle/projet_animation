@@ -35,6 +35,7 @@ public class Follow: Move
         }
 
         Vector3 direction = (targetPosition - fighter.transform.position).normalized;
+        fighter.transform.LookAt(targetPosition);
         fighter.transform.position += MoveSpeed * Time.deltaTime * direction;
         return null;
     }
