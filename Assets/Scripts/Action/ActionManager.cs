@@ -5,6 +5,7 @@ public class ActionManager
 {
     Fighter parent;
     Action currentAction;
+    public Action CurrentAction => currentAction;
 
     public ActionManager(Fighter parent)
     {

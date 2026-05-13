@@ -13,6 +13,7 @@ public class WalkMove: Move
     {
         Vector3 direction = (destination - fighter.transform.position).normalized;
         fighter.transform.position += direction * MoveSpeed * Time.deltaTime;
+        fighter.transform.LookAt(destination);
         if (Vector3.Distance(fighter.transform.position, destination) < 0.1f)
         {
             return new Stationary(fighter);

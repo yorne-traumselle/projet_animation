@@ -12,13 +12,13 @@ public class WalkAction : Action
 
     public override void OnEnter()
     {
-        Debug.Log("enter walk");
+        // Debug.Log("enter walk");
         fighter.ChangeMove(move);
     }
 
     public override void OnExit()
     {
-        Debug.Log("exit walk");
+        // Debug.Log("exit walk");
     }
 
     public override Action Update()
